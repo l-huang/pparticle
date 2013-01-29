@@ -2,23 +2,27 @@ clear
 clear global
 close all
 
-addpath 'C:\Users\pszjp\Documents\MATLAB\Usefull'
+addpath 'Resources/Utils'
 addpath 'Resources/Initialise'
 addpath 'Resources/Output'
 addpath 'Resources/Predict'
 addpath 'Resources/Update'
 addpath 'Resources/Resample'
-addpath 'Resources/GNSS'
+% addpath 'Resources/GNSS'
 
 global ParticleHistories
+baseDir = pwd;
 
 %% ini values
 
-addpath 'G:\data\JJ_001\Proc'
+a = [['cd '] [''''] [pwd] ['\'] ['SampleData'] ['''']];
+eval(a);
 % cd 'G:\data\EdinDump\Walk2-HolyroodtoGeog\Proc'
 LoadINI
 % load 'BinaryMap.mat'
-cd 'C:\Users\pszjp\Documents\MATLAB\ParticleFilters\PParticle'
+%cd 'C:\Users\pszjp\Documents\MATLAB\ParticleFilters\PParticle'
+a = [['cd '] [''''] [baseDir] ['\'] ['''']];
+eval(a);
 
 %% Load Mapping
 
