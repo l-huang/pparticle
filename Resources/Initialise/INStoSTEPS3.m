@@ -12,6 +12,10 @@ global ParticleHistories
 
 ins = importdata(ini.fins, '\t');
 
+if isstruct(ins)
+    ins = ins.data;
+end
+
 ins(:,5:9)=[];
 ins(:,6:end)=[];
 

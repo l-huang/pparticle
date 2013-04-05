@@ -39,6 +39,9 @@ for i = 1:ini.n_particles
                 y = abs(floor{1}.doors(DoorNo,2)) - abs(y);
                 d = hypot(x,y);
 
+                DoorNo = DoorNo(d == min(d));
+                d = min(d);
+                
                 if d < 0.5 %Door is nearby, go throught it and update polygon No
                     temp = floor{1}.doorPolygons(DoorNo,2:3);
                     temp = temp + 1; 
@@ -73,6 +76,7 @@ for i = 1:ini.n_particles
     end
 
 %% ReWeight (CHAIN, ignore for Pi
+
 
 if particles(i,6) ~= 0 && ini.UseCardinal == true
     d = ini.Cardinal - particles(i,4);
