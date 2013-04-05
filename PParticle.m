@@ -13,9 +13,23 @@ addpath 'Resources/Resample'
 global ParticleHistories
 baseDir = pwd;
 
+%% Open control file
+
+
+ctrlFile = importdata('G:\Projects\OI Trial\ctrlFile.txt');
+nextLine = min(find(ctrlFile(:,4)==0));
+participant = [['P'] [num2str(ctrlFile(nextLine,1))]];
+trialNo = [ ['00'] [num2str(ctrlFile(nextLine,2))] ];
+if length(trialNo) == 4
+    trialNo(1) = [];
+end
+
+a = [['cd '] [''''] ['G:\data\OITrial_Jan2013\Participants'] ['\'] [participant] ['\'] [trialNo] ['\'] ['''']];
+
+
 %% ini values
 
-a = [['cd '] [''''] [pwd] ['\'] ['SampleData'] ['''']];
+% a = [['cd '] [''''] [pwd] ['\'] ['SampleData'] ['''']];
 % a = [['cd '] [''''] [pwd] ['\'] ['SampleData\Maze'] ['''']];
 eval(a);
 % cd 'G:\data\EdinDump\Walk2-HolyroodtoGeog\Proc'
@@ -101,6 +115,26 @@ end
 [posn] = getHistory(ini,observation);
 
 fclose all
+
+ctrlFile(nextLine,4) = 1;
+if FilterFail == true
+    ctrlFile(nextLine,5) = 1;
+end
+
+fid = fopen('G:\Projects\OI Trial\ctrlFile.txt','w');
+for i = 1:size(ctrlFile,1)
+    fprintf(fid,'%i,%i,%i,%i,%i \n',ctrlFile(i,:)); 
+end
+
+
+
+
+
+
+
+
+
+
 %% END
 
 
