@@ -42,7 +42,7 @@ for i=2:size(ins,1)
     dy = ins(i,7) - ins(last,7);
     distance = hypot(dx,dy);
     
-    if distance > 1
+    if distance > ini.filterUpdateDist
         step.length(k) = distance;% - (0.5*distance);
         step.x(k) = ins(i,6) - ins(last,6);
         step.y(k) = ins(i,7) - ins(last,7);

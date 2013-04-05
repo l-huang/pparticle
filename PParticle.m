@@ -16,6 +16,7 @@ baseDir = pwd;
 %% ini values
 
 a = [['cd '] [''''] [pwd] ['\'] ['SampleData'] ['''']];
+% a = [['cd '] [''''] [pwd] ['\'] ['SampleData\Maze'] ['''']];
 eval(a);
 % cd 'G:\data\EdinDump\Walk2-HolyroodtoGeog\Proc'
 LoadINI
@@ -94,5 +95,12 @@ for k = 2:(length(observation))
 %     end
 %     axis([mean(particles(:,2))-200 mean(particles(:,2))+200 mean(particles(:,1))-200 mean(particles(:,1))+200])
 end
+
+%% Output
+
+[posn] = getHistory(ini,observation);
+
+fclose all
+%% END
 
 
